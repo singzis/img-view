@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-surface-dark: var(--theme-surface-dark);
+  --color-surface-mid: var(--theme-surface-mid);
+  --color-surface-panel: var(--theme-surface-panel);
+  --color-surface-hover: var(--theme-surface-hover);
+  --color-border: var(--theme-border);
+  --color-border-strong: var(--theme-border-strong);
+  --color-accent: var(--theme-accent);
+  --color-accent-dim: var(--theme-accent-dim);
+  --color-accent-hover: var(--theme-accent-hover);
+  --color-text-primary: var(--theme-text-primary);
+  --color-text-secondary: var(--theme-text-secondary);
+  --color-text-muted: var(--theme-text-muted);
+  --color-text-inverse: var(--theme-text-inverse);
+}
+
+/* ── Light mode (default) ── */
+:root {
+  --theme-surface-dark: rgba(255, 255, 255, 0.85);
+  --theme-surface-mid: rgba(248, 248, 252, 0.75);
+  --theme-surface-panel: rgba(255, 255, 255, 0.9);
+  --theme-surface-hover: rgba(0, 0, 0, 0.04);
+  --theme-border: rgba(0, 0, 0, 0.06);
+  --theme-border-strong: rgba(0, 0, 0, 0.1);
+  --theme-accent: #007AFF;
+  --theme-accent-dim: rgba(0, 122, 255, 0.08);
+  --theme-accent-hover: #0066D6;
+  --theme-text-primary: rgba(0, 0, 0, 0.88);
+  --theme-text-secondary: rgba(0, 0, 0, 0.55);
+  --theme-text-muted: rgba(0, 0, 0, 0.3);
+  --theme-text-inverse: rgba(255, 255, 255, 0.92);
+  --theme-bg: #F2F2F7;
+}
+
+/* ── Dark mode ── */
+.dark {
+  --theme-surface-dark: rgba(20, 20, 24, 0.82);
+  --theme-surface-mid: rgba(28, 28, 34, 0.68);
+  --theme-surface-panel: rgba(24, 24, 30, 0.78);
+  --theme-surface-hover: rgba(255, 255, 255, 0.06);
+  --theme-border: rgba(255, 255, 255, 0.06);
+  --theme-border-strong: rgba(255, 255, 255, 0.1);
+  --theme-accent: #007AFF;
+  --theme-accent-dim: rgba(0, 122, 255, 0.1);
+  --theme-accent-hover: #3395FF;
+  --theme-text-primary: rgba(255, 255, 255, 0.92);
+  --theme-text-secondary: rgba(255, 255, 255, 0.6);
+  --theme-text-muted: rgba(255, 255, 255, 0.38);
+  --theme-text-inverse: rgba(0, 0, 0, 0.88);
+  --theme-bg: #0D0D0F;
+}
+
+/* ── Base styles ── */
+html {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display',
+               'SF Pro Text', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--theme-bg);
+  min-height: 100vh;
+}
+
+body {
+  background: transparent;
+  min-height: 100vh;
+}
+
+/* ── Glass utilities ── */
+.glass {
+  background: rgba(128, 128, 128, 0.08);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+}
+
+.glass-strong {
+  background: rgba(128, 128, 128, 0.06);
+  backdrop-filter: blur(60px) saturate(200%);
+  -webkit-backdrop-filter: blur(60px) saturate(200%);
+}
+
+.glass-light {
+  background: rgba(128, 128, 128, 0.04);
+  backdrop-filter: blur(30px) saturate(160%);
+  -webkit-backdrop-filter: blur(30px) saturate(160%);
+}
+
+.dark .glass {
+  background: rgba(28, 28, 34, 0.7);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+}
+
+.dark .glass-strong {
+  background: rgba(20, 20, 24, 0.82);
+  backdrop-filter: blur(60px) saturate(200%);
+  -webkit-backdrop-filter: blur(60px) saturate(200%);
+}
+
+.dark .glass-light {
+  background: rgba(32, 32, 38, 0.55);
+  backdrop-filter: blur(30px) saturate(160%);
+  -webkit-backdrop-filter: blur(30px) saturate(160%);
+}
+
+/* ── Scrollbar ── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--theme-border) transparent;
+}
+
+/* ── Electron drag region (macOS traffic lights) ── */
+.electron-drag-region {
+  -webkit-app-region: drag;
+  app-region: drag;
+}
+
+/* ── Focus ring ── */
+input:focus-visible,
+button:focus-visible {
+  outline: 2px solid rgba(0, 122, 255, 0.5);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.thumbnail-card {
+  content-visibility: auto;
+  contain-intrinsic-size: 150px 150px;
+}
